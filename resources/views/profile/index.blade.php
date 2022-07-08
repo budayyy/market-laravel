@@ -103,7 +103,7 @@
                                     <div class="input-group">
                                       <input type="hidden" name="oldFoto" value="{{ $session->picture }}">
                                         @if ($session->picture)
-                                            <img src="{{ asset('storage/'. $session->picture) }}" class="foto-preview img-fluid mb-3 col-sm-5 d-block rounded" alt="{{ $session->adm_name }}">
+                                            <img src="{{ asset('img/'. $session->picture) }}" class="foto-preview img-fluid mb-3 col-sm-5 d-block rounded" alt="{{ $session->adm_name }}">
                                         @else
                                             <img alt="" class="foto-preview img-fluid mb-3 col-sm-5 d-block">
                                         @endif
