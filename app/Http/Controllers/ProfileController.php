@@ -132,17 +132,18 @@ class ProfileController extends Controller
 
     public function ubahFoto(Request $request, $id)
     {
-        $foto = DB::table('administrator')->where('adm_id', $id)->first();
-        $name = $foto->picture;
-        if ($request->hasFile('foto')) {
-            $foto = $request->file('foto');
-            $name = time() . '.' . $foto->getClientOriginalExtension();
-            $destinationPath = public_path('/img');
-            $foto->move($destinationPath, $name);
-        }
-        DB::table('administrator')->where('adm_id', $id)->update([
-            'picture' => $name
+
+        $validateData = $this->validate($request, [
+            'picture' => 'image|file|max:2048'
         ]);
+
+        if ($request->file('image')) {
+            $validateData['picture'] = $request->file('image')->store('image-profile');
+        }
+
+        $admin = Admin::find($id);
+        $admin->picture = $validateData['picture'];
+        $admin->save();
 
         return redirect('/profile')->with('success', 'Foto Profile berhasil di ubah');
     }

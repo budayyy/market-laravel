@@ -66,7 +66,7 @@
                 <div class="card-body box-profile">
                   <div class="text-center">
                     <img class="profile-user-img img-fluid img-circle"
-                         src="{{ asset('img/'. $session->picture) }}"
+                         src="{{ asset('storage/'. $session->picture) }}"
                          alt="User profile picture">
                   </div>
   
@@ -101,16 +101,16 @@
                                   <div class="form-group">
                                     <label for="exampleInputFile">Pilih foto</label>
                                     <div class="input-group">
-                                      <input type="hidden" name="oldFoto" value="{{ $session->picture }}">
+                                      {{-- <input type="hidden" name="oldImage" value="{{ $session->picture }}"> --}}
                                         @if ($session->picture)
-                                            <img src="{{ asset('img/'. $session->picture) }}" class="foto-preview img-fluid mb-3 col-sm-5 d-block rounded" alt="{{ $session->adm_name }}">
+                                            <img src="{{ asset('storage/' . $session->picture) }}" class="img-preview img-fluid mb-3 col-sm-5 d-block rounded-lg">
                                         @else
-                                            <img alt="" class="foto-preview img-fluid mb-3 col-sm-5 d-block">
+                                            <img class="img-preview img-fluid mb-3 col-sm-5 rounded-lg">
                                         @endif
                                     </div>
                                     <div class="input-group">
                                       <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="foto" name="foto" onchange="previewImage()">
+                                        <input type="file" class="custom-file-input" id="image" name="image" onchange="previewImage()">
                                         <label class="custom-file-label" for="exampleInputFile">pilih dari komputer</label>
                                       </div>
                                     </div>
@@ -234,19 +234,21 @@
 
 
       <script>
-          function previewImage(){
-            const foto = document.querySelector('#foto');
-            const fotoPreview = document.querySelector('.foto-preview');
+        
+        function previewImage(){
+          const image = document.querySelector('#image');
+          const imgPreview = document.querySelector('.img-preview');
 
-            fotoPreview.style.display = 'block';
-            
-            const oFReader = new fileReader();
-            oFReader.readAsDataURL(foto.files[0]);
+          imgPreview.style.display = 'block';
 
-            oFReader.onload = function(oFREvent){
-              fotoPreview.src = oFREvent.target.result;
-            }
+          const oFReader = new FileReader();
+          oFReader.readAsDataURL(image.files[0]);
+
+          oFReader.onload = function(oFREvent){
+            imgPreview.src = oFREvent.target.result;
           }
+
+        }
       </script>
 
 @endsection

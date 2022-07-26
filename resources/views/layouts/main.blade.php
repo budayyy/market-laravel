@@ -20,6 +20,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="{{ asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
   <link rel="stylesheet" href="{{ asset('plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
 
+  <link
+      rel="icon"
+      href="img/bina-icon.png"
+      type="image/gif"
+      sizes="16x16"
+    />
+
   {{-- chart --}}
   <script src="{{ asset('adminlte/plugins/chart.js/Chart.js') }}"></script>
 

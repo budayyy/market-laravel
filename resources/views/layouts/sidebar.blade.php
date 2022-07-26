@@ -2,8 +2,8 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-2">
     <!-- Brand Logo -->
     <a href="/dashboard" class="brand-link">
-      <img src="{{ asset('adminlte/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">Marketplace</span>
+      <img src="{{ asset('img/bina-logo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-2" style="opacity: 0.8">
+      <span class="brand-text font-weight-bold">Marketplace</span>
     </a>
 
     <!-- Sidebar -->
@@ -11,7 +11,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="{{ asset('img/'. $session->picture) }}" class="img-circle elevation-2" alt="User Image">
+          <img src="{{ asset('storage/'. $session->picture) }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block">{{ $session->adm_name }}</a>
@@ -23,7 +23,8 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          
+
+
           {{-- Menu Dashboard --}}
           <li class="nav-item">
             <a href="/dashboard" class="nav-link {{ Request::is('dashboard') ? 'active' : '' }}">
@@ -33,6 +34,8 @@
               </p>
             </a>
           </li>
+
+          @if ($session->role_id === 1)
 
           <li class="nav-header"><b>ADMINISTRATOR</b></li>
 
@@ -209,6 +212,163 @@
               </li>
             </ul>
           </li>
+
+          @elseif($session->role_id === 2)
+
+          <li class="nav-header"><b>CUSTOMER SERVICE</b></li>
+
+          {{-- Menu Category --}}
+          <li class="nav-item">
+            <a href="/category" class="nav-link {{ Request::is('category') ? 'active' : '' }}">
+              <i class="fas fa-clone nav-icon"></i>
+              <p>
+                Category
+              </p>
+            </a>
+          </li>
+
+          {{-- Shiping --}}
+          <li class="nav-item">
+            <a href="/shipping" class="nav-link {{ Request::is('shipping') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-shopping-cart"></i>
+              <p>
+                Shiping
+              </p>
+            </a>
+          </li>
+
+          {{-- Orders --}}
+          <li class="nav-item">
+            <a href="/orders" class="nav-link {{ ($title == "Orders") ? 'active' : '' }}">
+              <i class="nav-icon fas fa-list-ul"></i>
+              <p>
+                Orders
+              </p>
+            </a>
+          </li>
+          {{-- retail --}}
+          <li class="nav-item {{ ($title === "Retail") ? 'menu-open' : '' }}">
+            <a href="#" class="nav-link {{ ($title === "Retail") ? 'active' : '' }}">
+              <i class="nav-icon fas fa-store-alt"></i>
+              <p>
+                Retail
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/retail" class="nav-link {{ (request()->is('retail')) ? 'active' : '' }}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Dashboard</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/retail/aktif" class="nav-link {{ (request()->is('retail/aktif')) ? 'active' : '' }}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Aktif</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/retail/reject" class="nav-link {{ (request()->is('retail/reject')) ? 'active' : '' }}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Rejected</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/retail/review" class="nav-link {{ (request()->is('retail/review')) ? 'active' : '' }}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Perlu Persetujuan</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          {{-- chat --}}
+          <li class="nav-item">
+            <a href="/chat" class="nav-link {{ (request()->is('chat')) ? 'active' : '' }}">
+              <i class="far fa-comment-alt nav-icon"></i>
+              <p>
+                Chat
+              </p>
+            </a>
+          </li>
+
+          {{-- laporan --}}
+          <li class="nav-item {{ ($title === "Laporan") ? 'menu-open' : '' }}">
+            <a href="#" class="nav-link {{ ($title === "Laporan") ? 'active' : '' }}">
+              <i class="nav-icon fas fa-store-alt"></i>
+              <p>
+                Laporan
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/laporan" class="nav-link {{ (request()->is('laporan')) ? 'active' : '' }}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Dashboard Laporan</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/laporan/penjualan" class="nav-link {{ (request()->is('laporan/penjualan')) ? 'active' : '' }}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Laporan Penjualan</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/laporan/terbanyak" class="nav-link {{ (request()->is('laporan/terbanyak')) ? 'active' : '' }}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Penjualan Terbanyak</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/laporan/periode" class="nav-link {{ (request()->is('laporan/periode')) ? 'active' : '' }}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Periode Penjualan</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          @elseif($session->role_id === 3)
+
+          <li class="nav-header"><b>PIMPINAN</b></li>
+          {{-- laporan --}}
+          <li class="nav-item {{ ($title === "Laporan") ? 'menu-open' : '' }}">
+            <a href="#" class="nav-link {{ ($title === "Laporan") ? 'active' : '' }}">
+              <i class="nav-icon fas fa-store-alt"></i>
+              <p>
+                Laporan
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/laporan" class="nav-link {{ (request()->is('laporan')) ? 'active' : '' }}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Dashboard Laporan</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/laporan/penjualan" class="nav-link {{ (request()->is('laporan/penjualan')) ? 'active' : '' }}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Laporan Penjualan</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/laporan/terbanyak" class="nav-link {{ (request()->is('laporan/terbanyak')) ? 'active' : '' }}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Penjualan Terbanyak</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/laporan/periode" class="nav-link {{ (request()->is('laporan/periode')) ? 'active' : '' }}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Periode Penjualan</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          @endif
 
           <li class="nav-header"><b>USER</b></li>
 

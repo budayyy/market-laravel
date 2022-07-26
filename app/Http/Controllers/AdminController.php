@@ -21,7 +21,7 @@ class AdminController extends Controller
 
         $users = Admin::join('user_role', 'role_id', '=', 'id')
             ->where('role_id', '!=', 1)->get();
-        $role = DB::table('user_role')->get();
+        $role = DB::table('user_role')->where('id', '!=', 1)->get();
         return view('users.index', [
             "title" => "Users",
             "users" => $users,
@@ -74,7 +74,7 @@ class AdminController extends Controller
             "adm_email" => $request->get('adm_email'),
             "adm_phone" => $request->get('adm_phone'),
             "adm_username" => $request->get('adm_username'),
-            "picture"      => 'profile.png',
+            "picture"      => 'image-profile/profile.png',
             "adm_password" => $password,
             "role_id" => $request->get('role_id')
         ]);

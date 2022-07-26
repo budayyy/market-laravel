@@ -13,7 +13,12 @@
   {{-- <link rel="stylesheet" href="{{ asset('adminlte/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}"> --}}
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('adminlte/dist/css/adminlte.min.css') }}">
-
+  <link
+  rel="icon"
+  href="img/bina-icon.png"
+  type="image/gif"
+  sizes="16x16"
+/>
   {{-- Css Login --}}
   <link rel="stylesheet" href="{{ asset('css/login.css') }}">
 
