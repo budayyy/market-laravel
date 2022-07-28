@@ -11,7 +11,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="{{ asset('storage/'. $session->picture) }}" class="img-circle elevation-2" alt="User Image">
+          <img src="{{ url('img/image_profile/'. $session->picture ) }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block">{{ $session->adm_name }}</a>
@@ -35,7 +35,7 @@
             </a>
           </li>
 
-          @if ($session->role_id === 1)
+          @if ($session->role_id == 1)
 
           <li class="nav-header"><b>ADMINISTRATOR</b></li>
 
@@ -213,7 +213,7 @@
             </ul>
           </li>
 
-          @elseif($session->role_id === 2)
+          @elseif($session->role_id == 2)
 
           <li class="nav-header"><b>CUSTOMER SERVICE</b></li>
 
@@ -329,7 +329,7 @@
               </li>
             </ul>
           </li>
-          @elseif($session->role_id === 3)
+          @elseif($session->role_id == 3)
 
           <li class="nav-header"><b>PIMPINAN</b></li>
           {{-- laporan --}}

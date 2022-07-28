@@ -41,7 +41,7 @@
     <div class="content">
         <div class="container-fluid">
 
-          @if ($session->role_id === 1)
+          @if ($session->role_id == 1)
               {{-- baris pertama --}}
             <div class="row">
 
@@ -225,7 +225,7 @@
 
          </div>
          {{-- batas baris ketiga --}}
-          @elseif($session->role_id === 2)
+          @elseif($session->role_id == 2)
 
           <div class="row">
            
@@ -296,7 +296,7 @@
           <!-- ./col -->
            
           </div>
-          @elseif($session->role_id === 3)
+          @elseif($session->role_id == 3)
           <div class="row">
             <!-- Laporan -->
             <div class="col-lg-3 col-6">

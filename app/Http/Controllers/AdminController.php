@@ -74,7 +74,7 @@ class AdminController extends Controller
             "adm_email" => $request->get('adm_email'),
             "adm_phone" => $request->get('adm_phone'),
             "adm_username" => $request->get('adm_username'),
-            "picture"      => 'image-profile/profile.png',
+            "picture"      => 'profile.png',
             "adm_password" => $password,
             "role_id" => $request->get('role_id')
         ]);

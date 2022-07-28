@@ -66,7 +66,7 @@
                 <div class="card-body box-profile">
                   <div class="text-center">
                     <img class="profile-user-img img-fluid img-circle"
-                         src="{{ asset('storage/'. $session->picture) }}"
+                         src="{{ url('img/image_profile/' . $session->picture) }}"
                          alt="User profile picture">
                   </div>
   
@@ -103,7 +103,7 @@
                                     <div class="input-group">
                                       {{-- <input type="hidden" name="oldImage" value="{{ $session->picture }}"> --}}
                                         @if ($session->picture)
-                                            <img src="{{ asset('storage/' . $session->picture) }}" class="img-preview img-fluid mb-3 col-sm-5 d-block rounded-lg">
+                                            <img src="{{ url('/img/image_profile/' . $session->picture) }}" class="img-preview img-fluid mb-3 col-sm-5 d-block rounded-lg">
                                         @else
                                             <img class="img-preview img-fluid mb-3 col-sm-5 rounded-lg">
                                         @endif
